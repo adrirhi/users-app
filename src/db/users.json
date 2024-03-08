@@ -1,0 +1,32 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "name": "driss",
+            "lastname": "el adrirhi",
+            "email": "driss@gmail.com",
+            "password": "123"
+        },
+        {
+            "id": 1,
+            "name": "Mohammed",
+            "lastname": "el Mohammed",
+            "email": "Mohammed@gmail.com",
+            "password": "123"
+        },
+        {
+            "id": 1,
+            "name": "khalid",
+            "lastname": "el khalid",
+            "email": "khalid@gmail.com",
+            "password": "123"
+        },
+        {
+            "id": 1,
+            "name": "toto",
+            "lastname": "el toto",
+            "email": "toto@gmail.com",
+            "password": "123"
+        }
+    ]
+}
