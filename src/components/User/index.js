@@ -4,13 +4,9 @@ import { useEffect, useState } from "react";
 
 let USER_IDS = 6;
 
-export default function User(props){
+export default function User( {showModal, closeModal, addUser, id }){
     let [user, setUser] = useState({})
-    const showModal = props.showModal;
-    const closeModal = props.closeModal;
-    const addUser = props.addUser;
-    const id = props.id;
-
+    
     const fetchUser = () => {
         axios.get("http://localhost:3000/users")
             .then( ({data}) => {
