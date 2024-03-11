@@ -8,25 +8,26 @@
             "password": "123"
         },
         {
-            "id": 1,
+            "id": 2,
             "name": "Mohammed",
             "lastname": "el Mohammed",
             "email": "Mohammed@gmail.com",
             "password": "123"
         },
         {
-            "id": 1,
+            "id": 3,
             "name": "khalid",
             "lastname": "el khalid",
             "email": "khalid@gmail.com",
             "password": "123"
         },
         {
-            "id": 1,
+            "id": 4,
             "name": "toto",
             "lastname": "el toto",
             "email": "toto@gmail.com",
             "password": "123"
         }
-    ]
+    ],
+    "profile": { "name": "typicode" }
 }
