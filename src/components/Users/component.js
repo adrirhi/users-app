@@ -15,15 +15,12 @@ export default function Users({
   isLoading,
   error,
   toggleShowUserModal,
-  addUser,
   selectedUserId,
   users,
   updateUserButtondeleteUser,
   showModal,
   updateUserButton,
-  deleteUser,
 }) {
-  console.log({ isLoading });
   if (isLoading) return <CircularProgress />;
 
   if (error != null) return <h3>{error}</h3>;
@@ -34,7 +31,7 @@ export default function Users({
       <button onClick={toggleShowUserModal}>Ajoute un Utilisateur</button>
       <User
         id={selectedUserId}
-        addUser={addUser}
+        // addUser={addUser}
         closeModal={toggleShowUserModal}
         showModal={showModal}
       />
@@ -53,7 +50,6 @@ export default function Users({
               <UserRow
                 key={user.id}
                 user={user}
-                deleteUser={deleteUser}
                 updateUserButton={updateUserButton}
               />
             ))}

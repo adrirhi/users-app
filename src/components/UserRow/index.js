@@ -1,31 +1,34 @@
-import { TableCell, TableRow } from "@mui/material"
+import { TableCell, TableRow } from "@mui/material";
+import { useDispatch } from "react-redux";
 
+import { deleteUserAction } from "../reducer/users/actions";
 
+export default function UserRow({ user, updateUserButton }) {
+  const dispatch = useDispatch();
 
-export default function UserRow({user, updateUserButton, deleteUser}) {
-  
-    const handleDeleteUser = () => {
-        deleteUser(user.id)
-    }
+  const handleDeleteUser = () => {
+    dispatch(deleteUserAction(user.id));
+  };
 
-    const handleUpdateUserBtn = () => {
-        updateUserButton(user.id)
-    }
+  const handleUpdateUserBtn = () => {
+    updateUserButton(user.id);
+  };
 
-    return (
+  return (
     <TableRow
-        key={user.id}
-        sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+      key={user.id}
+      sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
     >
-    <TableCell component="th" scope="row">{user.name}</TableCell>
-    <TableCell >{user.lastname}</TableCell>
-    <TableCell >{user.email}</TableCell>
-    <TableCell >
+      <TableCell component="th" scope="row">
+        {user.name}
+      </TableCell>
+      <TableCell>{user.lastname}</TableCell>
+      <TableCell>{user.email}</TableCell>
+      <TableCell>
         <button onClick={handleUpdateUserBtn}>Modifier</button>
         <button onClick={handleDeleteUser}>Supprimer</button>
         <button>Voir</button>
-    </TableCell>
-</TableRow>
-    )
-    
+      </TableCell>
+    </TableRow>
+  );
 }

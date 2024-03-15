@@ -1,55 +1,45 @@
-import axios from "axios"
-import { useEffect, useState } from "react"
+import axios from "axios";
+import { useEffect, useState } from "react";
 import Users from "./component";
+import { useDispatch, useSelector } from "react-redux";
+import { updateUserListAction } from "../reducer/users/actions";
 
-export default function UsersContainer(){
-    let [users, setUsers] = useState([])
-    let [error, setError] = useState(null)
-    let [isLoading, setIsloading] = useState(true)
-    let [showModal, setShowModal] = useState(false);
-    let [selectedUserId, setSelectedUserId] = useState();
+export default function UsersContainer() {
+  let [showModal, setShowModal] = useState(false);
+  let [selectedUserId, setSelectedUserId] = useState();
 
-    const fetchUsers = () => {
-        axios.get("http://localhost:3000/users")
-            .then( ({data}) => {
-                setUsers(data)
-                setIsloading(false);
-            })
-            .catch(({message}) => {
-                setError(message);
-                setIsloading(false);
-            })
-    }
+  const dispatch = useDispatch();
+  const isLoading = useSelector((store) => store.users.isLoading);
+  const users = useSelector((store) => store.users.data);
 
-    const addUser = (user) => {
-       setUsers([user, ...users ])
-    }
+  const fetchUsers = () => {
+    axios.get("http://localhost:3000/users").then(({ data }) => {
+      dispatch(updateUserListAction(data));
+    });
+  };
 
-    useEffect( () => {
-        fetchUsers()
-    } , []);
+  useEffect(() => {
+    fetchUsers();
+  }, []);
 
-    const toggleShowUserModal = () => {
-        setShowModal(!showModal)
-        if(showModal) setSelectedUserId(null);
-    }
+  const toggleShowUserModal = () => {
+    setShowModal(!showModal);
+    if (showModal) setSelectedUserId(null);
+  };
 
-    const updateUserButton = (userId)  => {
-        setSelectedUserId(userId)
-        toggleShowUserModal();
+  const updateUserButton = (userId) => {
+    setSelectedUserId(userId);
+    toggleShowUserModal();
+  };
 
-    }
-
-    const deleteUser = (userId) => {
-        const new_users = users.filter( user => user.id !== userId);
-        setUsers(new_users)
-    }
-
-    return <Users deleteUser={deleteUser} updateUserButton={updateUserButton}
-    addUser={addUser} selectedUserId={selectedUserId}
-                    users={users} 
-                    error={error} 
-                    isLoading={isLoading} 
-                    showModal={showModal} toggleShowUserModal={toggleShowUserModal} />
-
-                }
+  return (
+    <Users
+      updateUserButton={updateUserButton}
+      selectedUserId={selectedUserId}
+      users={users}
+      isLoading={isLoading}
+      showModal={showModal}
+      toggleShowUserModal={toggleShowUserModal}
+    />
+  );
+}
