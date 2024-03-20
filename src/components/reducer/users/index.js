@@ -1,4 +1,4 @@
-import { ADD_USER, DELETE_USER, FETCH_USERS } from "./actions";
+import { ADD_USER, DELETE_USER, FETCH_USERS, UPDATE_USER } from "./actions";
 
 const initialState = {
   isLoading: true,
@@ -18,6 +18,16 @@ const usersReducer = (state = initialState, action) => {
       return {
         ...state,
         data: state.data.filter((user) => user.id !== payload.id),
+      };
+
+    case UPDATE_USER:
+      return {
+        ...state,
+        data: state.data.map((user) => {
+          if (user.id === payload.user.id) return payload.user;
+
+          return user;
+        }),
       };
 
     default:

@@ -2,16 +2,18 @@ import { TableCell, TableRow } from "@mui/material";
 import { useDispatch } from "react-redux";
 
 import { deleteUserAction } from "../reducer/users/actions";
+import { useNavigate } from "react-router-dom";
 
-export default function UserRow({ user, updateUserButton }) {
+export default function UserRow({ user }) {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleDeleteUser = () => {
     dispatch(deleteUserAction(user.id));
   };
 
   const handleUpdateUserBtn = () => {
-    updateUserButton(user.id);
+    navigate(`${user.id}`);
   };
 
   return (

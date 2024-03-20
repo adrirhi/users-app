@@ -7,8 +7,8 @@ import TableRow from "@mui/material/TableRow";
 import { CircularProgress } from "@mui/material";
 import propTypes from "prop-types";
 
-import User from "../User";
 import UserRow from "../UserRow";
+import Settings from "../Settings";
 //
 
 export default function Users({
@@ -29,12 +29,6 @@ export default function Users({
     <div>
       <h1>list of users</h1>
       <button onClick={toggleShowUserModal}>Ajoute un Utilisateur</button>
-      <User
-        id={selectedUserId}
-        // addUser={addUser}
-        closeModal={toggleShowUserModal}
-        showModal={showModal}
-      />
       <TableContainer>
         <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
           <TableHead>

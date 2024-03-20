@@ -1,30 +1,19 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Users from "./component";
-import { useDispatch, useSelector } from "react-redux";
-import { updateUserListAction } from "../reducer/users/actions";
+import useUsers from "../hooks/useUsers";
+import { useNavigate } from "react-router-dom";
 
 export default function UsersContainer() {
   let [showModal, setShowModal] = useState(false);
   let [selectedUserId, setSelectedUserId] = useState();
 
-  const dispatch = useDispatch();
-  const isLoading = useSelector((store) => store.users.isLoading);
-  const users = useSelector((store) => store.users.data);
+  const navigate = useNavigate();
 
-  const fetchUsers = () => {
-    axios.get("http://localhost:3000/users").then(({ data }) => {
-      dispatch(updateUserListAction(data));
-    });
-  };
-
-  useEffect(() => {
-    fetchUsers();
-  }, []);
+  // first instance of useUsers
+  const { users, isLoading } = useUsers();
 
   const toggleShowUserModal = () => {
-    setShowModal(!showModal);
-    if (showModal) setSelectedUserId(null);
+    navigate("/users/add");
   };
 
   const updateUserButton = (userId) => {
