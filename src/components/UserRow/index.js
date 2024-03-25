@@ -18,6 +18,7 @@ export default function UserRow({ user }) {
 
   return (
     <TableRow
+      data-testid={user.id}
       key={user.id}
       sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
     >

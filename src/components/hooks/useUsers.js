@@ -10,13 +10,13 @@ import {
 
 const useUsers = ({ refetchUsers } = { refetchUsers: false }) => {
   const dispatch = useDispatch();
-  const isLoading = useSelector((store) => store.users.isLoading);
+  const isLoading = useSelector((store) => store?.users?.isLoading);
 
-  const users = useSelector((store) => store.users.data);
-
+  const users = useSelector((store) => store?.users?.data);
+  console.log({ users });
   const fetchUsers = () => {
     if ((users && users.length == 0) || refetchUsers)
-      axios.get("http://localhost:3000/users").then(({ data }) => {
+      axios.get("http://localhost:3002/users").then(({ data }) => {
         dispatch(updateUserListAction(data));
       });
   };

@@ -11,6 +11,7 @@ export default function UsersContainer() {
 
   // first instance of useUsers
   const { users, isLoading } = useUsers();
+  console.log("users::::: ", { users });
 
   const toggleShowUserModal = () => {
     navigate("/users/add");

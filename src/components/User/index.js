@@ -10,6 +10,7 @@ export default function User() {
 
   const navigate = useNavigate();
   const { id } = useParams();
+  console.log("____________ : ", { id });
   const { getUserById, updateUser, addUser } = useUsers({
     refetchUsers: false,
   });
