@@ -17,7 +17,7 @@ const useUsers = ({ refetchUsers } = { refetchUsers: false }) => {
   const fetchUsers = () => {
     if ((users && users.length == 0) || refetchUsers)
       axios.get("http://localhost:3002/users").then(({ data }) => {
-        dispatch(updateUserListAction(data));
+        dispatch(updateUserListAction(data.users));
       });
   };
 

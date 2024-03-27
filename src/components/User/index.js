@@ -2,12 +2,14 @@ import { useEffect, useState } from "react";
 
 import useUsers from "../hooks/useUsers";
 import { useNavigate, useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 let USER_IDS = 6;
 
 export default function User() {
   let [user, setUser] = useState({});
 
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const { id } = useParams();
   console.log("____________ : ", { id });
@@ -51,7 +53,7 @@ export default function User() {
       }}
     >
       <div>
-        <label>nom : </label>
+        <label>{t("users-page.name")} : </label>
         <input
           value={user.name}
           name="name"
@@ -61,7 +63,7 @@ export default function User() {
       </div>
       <br />
       <div>
-        <label>Prénom : </label>
+        <label>{t("users-page.lastname")} : </label>
         <input
           value={user.lastname}
           name="lastname"
@@ -71,7 +73,7 @@ export default function User() {
       </div>
       <br />
       <div>
-        <label>Email : </label>
+        <label>{t("users-page.mail")} : </label>
         <input
           value={user.email}
           name="email"
@@ -81,7 +83,7 @@ export default function User() {
       </div>
       <br />
       <div>
-        <label>Password : </label>
+        <label>{t("users-page.password")} : </label>
         <input
           value={user.password}
           name="password"
@@ -90,8 +92,11 @@ export default function User() {
         />
       </div>
       <br />
-      <button onClick={confirmBtn}>{id ? "Modifier" : "Ajouter"}</button>
-      <button onClick={goBack}>Annuler</button>
+      <button onClick={confirmBtn}>
+        {/* {id ? t("common.update") : t("common.add")} */}
+        {t(`common.${id ? "update" : "add"}`)}
+      </button>
+      <button onClick={goBack}>{t("common.cancel")}</button>
     </div>
   );
 }

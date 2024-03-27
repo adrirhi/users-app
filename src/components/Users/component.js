@@ -6,9 +6,11 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import { CircularProgress } from "@mui/material";
 import propTypes from "prop-types";
+import { useTranslation } from "react-i18next";
 
 import UserRow from "../UserRow";
 import Settings from "../Settings";
+import Header from "../header";
 //
 
 export default function Users({
@@ -21,22 +23,24 @@ export default function Users({
   showModal,
   updateUserButton,
 }) {
+  const { t } = useTranslation();
   if (isLoading) return <CircularProgress />;
 
   if (error != null) return <h3>{error}</h3>;
 
   return (
     <div>
-      <h1>list of users</h1>
-      <button onClick={toggleShowUserModal}>Ajoute un Utilisateur</button>
+      <Header />
+      <h1>{t("users-page.users-title-page")}</h1>
+      <button onClick={toggleShowUserModal}>{t("users-page.add-user")}</button>
       <TableContainer>
         <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
           <TableHead>
             <TableRow>
-              <TableCell>Nom</TableCell>
-              <TableCell>Prénom</TableCell>
-              <TableCell>Email</TableCell>
-              <TableCell>Actions</TableCell>
+              <TableCell> {t("users-page.name")} </TableCell>
+              <TableCell>{t("users-page.lastname")}</TableCell>
+              <TableCell>{t("users-page.mail")}</TableCell>
+              <TableCell>{t("users-page.actions")}</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>

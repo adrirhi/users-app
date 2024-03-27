@@ -1,0 +1,20 @@
+{
+    "users-page": {
+        "users-title-page": "Bienvenu to React and react-i18next xxxxxxxxxx",
+        "add-user": "ajouter un utilisateur",
+        "name": "Nom",
+        "lastname": "Prénom",
+        "mail": "Email",
+        "actions": "Actions",
+        "password": "Mot de passe"
+    },
+    "todos": {},
+    "common": {
+        "add": "Ajouter",
+        "delete": "Supprimer",
+        "consult": "Voir",
+        "update": "Modifier",
+        "cancel": "Annuler"
+    },
+    "app-title": "gestion utilisateurs"
+}
